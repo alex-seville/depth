@@ -7,14 +7,17 @@ import * as fs from "fs";
 
 import { pipeline, RawImage, env } from '@xenova/transformers';
 
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+env.localModelPath = __dirname + '/models/';
 env.allowRemoteModels = false;
 
 const depth_estimator = await pipeline('depth-estimation', 'Xenova/depth-anything-small-hf');
 
 
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 
 const app = express();
